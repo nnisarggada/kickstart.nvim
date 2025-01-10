@@ -22,10 +22,12 @@ return {
   },
   {
     'iamcco/markdown-preview.nvim',
-    event = 'VeryLazy',
-    run = function()
-      vim.fn['mkdp#util#install']()
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+    build = 'cd app && npm install',
+    init = function()
+      vim.g.mkdp_filetypes = { 'markdown' }
     end,
+    ft = { 'markdown' },
   },
   {
     'michaelrommel/nvim-silicon',
