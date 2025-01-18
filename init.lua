@@ -703,6 +703,7 @@ require('lazy').setup({
         'prettierd',
         'isort',
         'eslint-lsp',
+        'jdtls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
