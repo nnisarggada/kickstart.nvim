@@ -98,6 +98,7 @@ return {
       }
       -- exit terminal mode in the builtin terminal with a shortcut that is a bit easier
       vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+      vim.keymap.set('t', 'jj', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
       vim.keymap.set('n', '<leader>tf', ':ToggleTerm direction=float<CR>', { desc = 'Toggle floating terminal' })
       vim.keymap.set('n', '<leader>th', ':ToggleTerm direction=horizontal<CR>', { desc = 'Toggle horizontal terminal' })
@@ -111,5 +112,13 @@ return {
       'stevearc/dressing.nvim',
     },
     opts = {},
+  },
+  {
+    'nvim-java/nvim-java',
+    config = function()
+      vim.keymap.set('n', '<leader>jc', ':JavaBuildCleanWorkspace<CR>', { desc = 'Clean java workspace' })
+      vim.keymap.set('n', '<leader>jb', ':JavaBuildBuildWorkspace', { desc = 'Build java workspace' })
+      vim.keymap.set('n', '<leader>jr', ':JavaRunnerRunMain<CR>', { desc = 'Run java main application' })
+    end,
   },
 }

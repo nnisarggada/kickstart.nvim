@@ -141,8 +141,8 @@ vim.keymap.set('n', '<leader>sx', ':close<CR>') -- Close current split window
 -- Resize split windows
 vim.keymap.set('n', '<leader>+', ':resize +5<CR>') -- Increase window height
 vim.keymap.set('n', '<leader>-', ':resize -5<CR>') -- Decrease window height
-vim.keymap.set('n', '<leader>>', ':vertical resize -5<CR>') -- Increase window width
-vim.keymap.set('n', '<leader><', ':vertical resize +5<CR>') -- Decrease window width
+vim.keymap.set('n', '<leader>>', ':vertical resize +5<CR>') -- Increase window width
+vim.keymap.set('n', '<leader><', ':vertical resize -5<CR>') -- Decrease window width
 
 -- Save undo history
 vim.opt.undofile = true
@@ -716,6 +716,10 @@ require('lazy').setup({
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
+          jdtls = function()
+            require('java').setup {}
+            require('lspconfig').jdtls.setup {}
+          end,
         },
       }
     end,
@@ -963,6 +967,7 @@ require('lazy').setup({
         'css',
         'astro',
         'python',
+        'java',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
@@ -992,9 +997,9 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
